@@ -3,21 +3,23 @@ Repository of the models, data, and analysis used for a retrospective case study
 
 Note that this repository may not include the latest LLAMAS models and calibration data and is not intended for use in observation planning.
 
-------------------------------------------
+
 ## SETUP
 
 Unfortunately requires Python 3.8.8 specifically -- some of the libraries start to fight each other in later Python versions, last time I checked
 
 Set up a suitable environment by following these steps:
 
+```
 1. python -m venv .venv
 2. source .venv/Scripts/Activate (each time)
 3. python -m pip install -U pip
 4. python -m pip install -r requirements.txt
+```
 
-Installing numpy==1.25.2 is unfortunately necessary to get pytensor working outside of an Anaconda environment, but thats the source of all of those pytensor.configdefults warning messages.
+Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working outside of an Anaconda environment, but thats the source of all of those pytensor.configdefults warning messages.
 
-------------------------------------------
+
 ## DIRECTORY OVERVIEW
 
 ```
@@ -55,52 +57,52 @@ Installing numpy==1.25.2 is unfortunately necessary to get pytensor working outs
  | |-uncertainty_propagation.py	(Plotting, analysis for UP)
 ```
 
-------------------------------------------
+
 ##ANALYSIS
 
-Directory: `llamas-vvopt/problems/llamas_snr_full`
+Directory: `llamas-vvopt/problems/llamas_snr_full`\
 
-`python snr_vv_opt.py --run nominal`
+`python snr_vv_opt.py --run nominal`\
 Test evaluation of the system model.
 
-`python snr_vv_opt.py --run UP_QoI`
-Perform uncertainty propagation on system model (Figure 6).
+`python snr_vv_opt.py --run UP_QoI`\
+Perform uncertainty propagation on system model **(Figure 6)**.
 
-`python snr_vv_opt.py --run SA_QoI_sample`
+`python snr_vv_opt.py --run SA_QoI_sample`\
 Generate samples for performing GSA on the system model. Save samples to logfiles.
 
-`python snr_vv_opt.py --run SA_QoI_evaluate`
-Perform GSA on system model samples (Figure 7). Performs convergence tests.
+`python snr_vv_opt.py --run SA_QoI_evaluate`\
+Perform GSA on system model samples **(Figure 7)**. Performs convergence tests.
 
-`python snr_vv_opt.py --run BN_sample`
+`python snr_vv_opt.py --run BN_sample`\
 Generate samples for training the Bayesian network. Save samples to a logfile.
 
-`python snr_vv_opt.py --run BN_train`
+`python snr_vv_opt.py --run BN_train`\
 Train Bayesian network on generated samples. Pickle and save.
 
-`python snr_vv_opt.py --run BN_examine`
-Generate a covariance heatmap of the generated samples (Figure 8).
+`python snr_vv_opt.py --run BN_examine`\
+Generate a covariance heatmap of the generated samples **(Figure 8)**.
 
-`python snr_vv_opt.py --run BN_find_ncomp`
-(Figure 9 BIC over range of ncomp)
+`python snr_vv_opt.py --run BN_find_ncomp`\
+Calculate the BIC of GMM's over range of ncomp, and plot **(Figure 9)**.
 
-`python snr_vv_opt.py --run OBED`
+`python snr_vv_opt.py --run OBED`\
 Run OBED for a few candidate designs using a trained BN.
 
-`python snr_vv_opt.py --run OBED_convergence`
+`python snr_vv_opt.py --run OBED_convergence`\
 Generate and save samples for conducting a convergence study of the OBED Monte Carlo.
 
-`python snr_vv_opt.py --run OBED_convergence_eval`
-Bootstraped OBED samples to measure confidence intervals of convergence (Figure 10).
+`python snr_vv_opt.py --run OBED_convergence_eval`\
+Bootstraped OBED samples to measure confidence intervals of convergence **(Figure 10)**.
 
-`python snr_vv_opt_slim.py --run OPT_nmc_p5`
-Run a NSGA-II optimization to develop a Pareto front of cost and utility (Figure 11)
+`python snr_vv_opt_slim.py --run OPT_nmc_p5`\
+Run a NSGA-II optimization to develop a Pareto front of cost and utility **(Figure 11)**.
 
-`python snr_vv_opt_slim.py --run plot`
-Pareto front using pre-processed results (Figure 11).
+`python snr_vv_opt_slim.py --run plot`\
+Pareto front using pre-processed results **(Figure 11)**.
 
-`python snr_vv_val.py --run yhist`
+`python snr_vv_val.py --run yhist`\
 Calculate and print the "y" measurements from historical LLAMAS verification.
 
-`python snr_vv_val.py --run compare_yhist_to_dstar`
-Compare range of possible posterior variances from d_opt_balanced to actual posterior variance of p(Q|y_historical, d_historical) (Figure 12).
+`python snr_vv_val.py --run compare_yhist_to_dstar`\
+Compare range of possible posterior variances from d_opt_balanced to actual posterior variance of p(Q|y_historical, d_historical) **(Figure 12)**.
