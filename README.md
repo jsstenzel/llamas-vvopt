@@ -6,7 +6,7 @@ Note that this repository may not include the latest LLAMAS models and calibrati
 
 ## SETUP
 
-Unfortunately requires Python 3.8.8 specifically -- some of the libraries start to fight each other in later Python versions, last time I checked
+Unfortunately requires Python 3.8.8 specifically -- some of the libraries start to fight each other in later Python versions, last time I checked.
 
 Set up a suitable environment by following these steps:
 
@@ -17,7 +17,7 @@ Set up a suitable environment by following these steps:
 4. python -m pip install -r requirements.txt
 ```
 
-Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working outside of an Anaconda environment, but thats the source of all of those pytensor.configdefults warning messages.
+Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working outside of an Anaconda environment, but thats the source of all of those `pytensor.configdefults` warning messages.
 
 
 ## DIRECTORY OVERVIEW
@@ -37,7 +37,7 @@ Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working ou
  | |-nsga.py					(NSGA-II for verification problem)
  |-problems
  | |-llamas_snr_full
- | | |-historical data			(Directory for 
+ | | |-historical data			(Directory for verification data)
  | | |-llamas-etc				(Effective Transmission Calculator)
  | | |-priors					(Directory for pre-generated prior GP's)
  | | |-snr_cost_model.py		(LLAMAS cost model)
@@ -47,7 +47,7 @@ Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working ou
  | | |-snr_vv_opt.py			(Analysis scripts)
  | | |-snr_vv_opt_slim.py		(Analysis scripts)
  | | |-snr_vv_val.py			(Analysis scripts)
- | | |-vendor data				(Directory for 
+ | | |-vendor data				(Directory for data used to develop priors)
  | |-problem_definition.py		(Template class for verification problem)
  |-uq
  | |-gsa_convergence.py			(Convergence tests for GSA)
@@ -58,9 +58,9 @@ Installing `numpy==1.25.2` is unfortunately necessary to get pytensor working ou
 ```
 
 
-##ANALYSIS
+## ANALYSIS
 
-Directory: `llamas-vvopt/problems/llamas_snr_full`\
+Directory: `llamas-vvopt/problems/llamas_snr_full`
 
 `python snr_vv_opt.py --run nominal`\
 Test evaluation of the system model.
@@ -105,4 +105,4 @@ Pareto front using pre-processed results **(Figure 11)**.
 Calculate and print the "y" measurements from historical LLAMAS verification.
 
 `python snr_vv_val.py --run compare_yhist_to_dstar`\
-Compare range of possible posterior variances from d_opt_balanced to actual posterior variance of p(Q|y_historical, d_historical) **(Figure 12)**.
+Compare range of possible posterior variances from optimized plan to actual posterior variance of historical plan and data **(Figure 12)**.
